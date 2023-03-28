@@ -1,0 +1,17 @@
+##menu "操作系统作业" 
+choice 
+	prompt "选择实验"
+	config EXPER1
+		bool "第一次实验"
+#
+#	config EXPER1
+#		bool "mutex experiment"
+#    
+#    config EXPER1
+#		bool "mutex experiment"
+
+	help 
+		"to choice experiment which will be compile and run"
+endchoice
+
+##endmenu
