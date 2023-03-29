@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
 # Configuration
-# 
 #
-CONFIG_EXPER1=y
+CONFIG_E1=y
+# CONFIG_E2 is not set
