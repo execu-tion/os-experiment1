@@ -13,7 +13,7 @@ all :  check $(obj-y) .config
 	$(CC) $(build)/$(obj-y) $(CFLAGS) $(LDFLAGS) -o $(build)/$(target) 
 
 check	:
-	$(shell if [ -d $(build) ];then :;else mkfir $(build) ;fi)
+	$(shell if [ -d $(build) ];then :;else mkdir $(build) ;fi)
 
 exper1.o : demo
 demo : demo.c
