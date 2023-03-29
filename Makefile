@@ -13,7 +13,7 @@ menuconfig : .config
 	make -C ./$(dest-y) $@
 
 .config : Kconfig
-	Kconfig-mconf Kconfig
+	kconfig-mconf Kconfig
 .PHONY : clean
 
 clean :

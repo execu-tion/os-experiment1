@@ -45,10 +45,13 @@ Queue queue1,queue2;
 /*semaphore declared in here! */
 sem_t mutex1,mutex2,space1,space2,num1,num2;
 /*relative functions*/
-#define semWait(x)	sem_wait(&x) //P function
+#define semWait(x)		sem_wait(&x) //P function
 #define semSignal(x)	sem_post(&x)//V function
-#define check(x) if( (x) != 0){printf("error,%d!\n",x); return -1;}
-#define LOG(x) printf("\033[32m\t\t\t\t\t\t\t\t%c running id:[%ld]\033[31m\n\033[37m" + ((x=='A')?13:(x=='B')?9:0),x,pthread_self())
+#define check(x) 		if( (x) != 0 )	{printf("\033[31merror at[%s],[func %s],[line %d],ret val is %d!\033[37m\n"\
+						,__FILE__,__FUNCTION__,__LINE__,x);return -1;}
+#define LOG(x) 			printf("\033[32m\t\t\t\t\t\t\t\t%c running id:[%ld]\033[31m\n\033[37m"\
+								 + ((x=='A')?13:(x=='B')?9:0),x,pthread_self())
+#define toUpper(x)		(char)( (x>=97)?(x<=122)?(x - 32):x:x )
 static inline void produce(char *ch){
 	scanf("%s",ch);
 }
@@ -111,7 +114,7 @@ void *threadB(void* param){
 		semWait(space2);
 		semWait(mutex2);
 		/*append function*/
-		append(&queue2,(char)((int)ch-32),'B');
+		append(&queue2,toUpper(ch),'B');
 		/*-------------*/
 		semSignal(mutex2);
 		semSignal(num2);
@@ -136,7 +139,6 @@ int main(int argc,char *argv[]){
 	init(&queue1);
 	init(&queue2);
 	/*semaphore init*/
-	int sas = 0;
 	check( sem_init( &mutex1,0,1) );
 	check( sem_init( &mutex2,0,1) );
 	check( sem_init( &space1,0,5) );
