@@ -9,8 +9,11 @@ target = $(subst .o,.out,$(obj-y))
 build = ../build
 ##
 
-all :  $(obj-y) .config
+all :  check $(obj-y) .config
 	$(CC) $(build)/$(obj-y) $(CFLAGS) $(LDFLAGS) -o $(build)/$(target) 
+
+check	:
+	$(shell if [ -d $(build) ];then :;else mkfir $(build) ;fi)
 
 exper1.o : demo
 demo : demo.c
