@@ -1,0 +1,14 @@
+##menu "操作系统作业" 
+choice 
+	prompt "实验"
+	config E1
+		bool "内存管理"
+
+	config E2
+		bool "内存置换"
+
+	help 
+		"to choice experiment which will be compile and run"
+endchoice
+
+##endmenu

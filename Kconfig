@@ -3,6 +3,8 @@ choice
 	prompt "选择实验"
 	config EXPER1
 		bool "第一次实验"
+	config EXPER2
+		bool "第二次实验"
 #
 #	config EXPER1
 #		bool "mutex experiment"
